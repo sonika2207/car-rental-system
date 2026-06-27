@@ -1,0 +1,23 @@
+# React
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# Java
+backend/target/
+
+# Python
+backend/__pycache__/
+*.pyc
+
+# Environment
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
