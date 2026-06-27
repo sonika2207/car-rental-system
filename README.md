@@ -1,155 +1,224 @@
-# Car Rental System
-MySQL + Flask + React + Tailwind CSS
+# 🚗 Car Rental System
 
-## Project Structure
+A full-stack Car Rental System that allows users to browse available cars, register, log in, and rent vehicles. The application also provides an Admin Dashboard to manage cars and customers. The project is built using React, Flask, and MySQL and is deployed online.
 
+## 🌐 Live Demo
+
+**Frontend:** https://car-rental-system-azure-iota.vercel.app/
+
+## 📌 Features
+
+### 👤 User Features
+- User Registration
+- User Login
+- View Available Cars
+- Rent Cars
+- View Customer Details
+
+### 🔑 Admin Features
+- Admin Login
+- Add New Cars
+- Update Car Details
+- Delete Cars
+- View All Cars
+- Manage Customers
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React.js
+- Vite
+- CSS
+- JavaScript
+
+### Backend
+- Flask
+- Flask-CORS
+- Gunicorn
+
+### Database
+- MySQL
+
+### Deployment
+- Frontend: Vercel
+- Backend: Railway
+- Database: Railway MySQL
+
+---
+
+## 📂 Project Structure
+
+```
 car-rental-system/
 │
-├── setup.sql                  ← Run this first in MySQL
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.js
 │
 ├── backend/
-│   ├── app.py                 ← Flask API (all routes)
-│   ├── db.py                  ← MySQL connection
-│   └── requirements.txt       ← Python dependencies
+│   ├── app.py
+│   ├── requirements.txt
+│   └── database.sql
 │
-└── frontend/
-    ├── index.html
-    ├── package.json
-    ├── vite.config.js
-    ├── tailwind.config.js
-    ├── postcss.config.js
-    └── src/
-        ├── main.jsx
-        ├── App.jsx
-        ├── index.css
-        └── pages/
-            ├── Home.jsx
-            ├── AdminLogin.jsx
-            ├── AdminDashboard.jsx
-            ├── UserLogin.jsx
-            ├── UserRegister.jsx
-            └── UserDashboard.jsx
+└── README.md
+```
 
-Prerequisites
+---
 
-Make sure these are installed:
+## ⚙️ Installation
 
-| Tool | Version |
-|------|---------|
-| Python | 3.8+ |
-| Node.js | 18+ |
-| MySQL | 8.0+ |
-| npm | 9+ |
-
-Step 1 — Database Setup
-
-Open MySQL and run the setup script:
+### 1️⃣ Clone Repository
 
 ```bash
-mysql -u root -p < setup.sql
+git clone https://github.com/sonika2207/car-rental-system.git
+cd car-rental-system
 ```
 
-Or manually in MySQL console:
+---
+
+### 2️⃣ Backend Setup
+
+Navigate to backend folder
+
+```bash
+cd backend
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Create MySQL database
 
 ```sql
-source /path/to/car-rental-system/setup.sql
+CREATE DATABASE car_rental;
 ```
 
-This creates:
-- Database: `car_rental`
-- Tables: `users`, `customers`, `cars`, `rentals`
-- Sample cars (5 cars pre-loaded)
+Import the SQL file
 
- Step 2 — Backend Setup (Flask)
+```bash
+mysql -u root -p car_rental < database.sql
+```
 
+Run Flask server
 
-# Navigate to backend folder
-cd crental/backend
-
-# (Optional) Create virtual environment
-python -m venv venv
-
-# Activate virtual environment
-# Windows:
-venv\Scripts\activate
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Start Flask server
+```bash
 python app.py
+```
 
-Flask runs at: **http://localhost:5000**
+Backend runs on
 
-Step 3 — Frontend Setup (React)
+```
+http://localhost:5000
+```
 
-Open a **new terminal**:
+---
 
+### 3️⃣ Frontend Setup
 
-# Navigate to frontend folder
-cd crental/frontend
+Navigate to frontend
 
-# Install dependencies
+```bash
+cd frontend
+```
+
+Install packages
+
+```bash
 npm install
+```
 
-# Start React dev server
+Create a `.env` file
+
+```env
+VITE_API=http://localhost:5000
+```
+
+Run React application
+
+```bash
 npm run dev
+```
+
+Frontend runs on
+
+```
+http://localhost:5173
+```
+
+---
+
+## 🗄️ Database Tables
+
+- Users
+- Customers
+- Cars
+- Rentals
+
+---
+
+## 🚀 Deployment
+
+### Frontend
+
+- Vercel
+
+### Backend
+
+- Railway
+
+### Database
+
+- Railway MySQL
+
+---
+
+## 📷 Screenshots
+
+You can add screenshots here.
+
+### Home Page
+
+<img width="1918" height="1020" alt="image" src="https://github.com/user-attachments/assets/09149315-f589-4827-90c4-8c826d6d8c49" />
 
 
-React runs at: **http://localhost:5173**
+### Admin Dashboard
 
- Running the App
-
-| Service | Command | URL |
-|---------|---------|-----|
-| Backend | `python app.py` | http://localhost:5000 |
-| Frontend | `npm run dev` | http://localhost:5173 |
-
-Open **http://localhost:5173** in your browser.
+<img width="1918" height="1022" alt="image" src="https://github.com/user-attachments/assets/439ddaf9-0747-4645-8db9-4bf0575b7d55" />
 
 
-Login Credentials
+### User Dashboard
 
-### Admin
-- **Password:** `1234`
-
-### User
-- Register a new account via the Register page
-- Then login with your email and password
+<img width="1917" height="1017" alt="image" src="https://github.com/user-attachments/assets/c61d1ebc-120d-4c13-b7f8-9444d9135363" />
 
 
+---
 
-API Endpoints
+## 📚 Future Enhancements
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/admin/login` | Admin login |
-| POST | `/user/register` | Register new user |
-| POST | `/user/login` | User login |
-| GET | `/cars` | Get all cars |
-| GET | `/available_cars` | Get available cars only |
-| POST | `/add_car` | Add a new car (admin) |
-| POST | `/rent_car` | Rent a car |
-| POST | `/return_car` | Return a car |
-| GET | `/rentals` | Get all rentals |
-| GET | `/rentals/user/<id>` | Get rentals for a user |
-| GET | `/customers` | Get all customers |
+- JWT Authentication
+- Online Payment Integration
+- Booking History
+- Email Notifications
+- Search & Filter Cars
+- Image Upload for Cars
+- Responsive Mobile Design
 
-Features
+---
 
-### Admin
-- Login with password (`1234`)
-- View all cars with status
-- Add new cars to the fleet
-- View all rental records
-- View all customers
+## 👩‍💻 Author
 
-### User
-- Register & login
-- Browse available cars
-- Rent a car (auto-calculates price)
-- Return a rented car
-- View personal rental history
-- See bill popup after renting
+**Sonika**
 
+GitHub:
+https://github.com/sonika2207
+
+---
+
+## ⭐ If you like this project
+
+Give this repository a ⭐ on GitHub!
