@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
 
-const API = 'http://localhost:5000'
+const API = import.meta.env.VITE_API
 
 export default function AdminLogin() {
   const navigate = useNavigate()
@@ -65,7 +65,10 @@ export default function AdminLogin() {
                 border: '1px solid rgba(255,255,255,0.1)',
                 fontSize: '15px'
               }}
+              
+
             />
+            
           </div>
 
           {error && (
@@ -81,6 +84,9 @@ export default function AdminLogin() {
           >
             {loading ? 'Verifying...' : 'Login as Admin'}
           </button>
+          <label className="block text-xs font-display uppercase tracking-widest mb-2" style={{color: 'rgba(240,237,232,0.5)'}}>
+              Admin Password : 1234
+            </label>
         </form>
 
         <div className="mt-6 text-center">
